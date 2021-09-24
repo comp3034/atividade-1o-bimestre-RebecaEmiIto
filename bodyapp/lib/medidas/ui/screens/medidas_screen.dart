@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'dart:ui' as ui;
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
@@ -18,20 +20,46 @@ class MedidasScreen extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              height: height - 64,
+              top: 170 * 568 / height,
+              right: 90 * 320 / width,
+
+              width: 100 * 320 / width,
+              height: 300 * 568 / height,
+              child: Column(
+                children: [
+                  CustomPaint(
+                    painter: new Gordura(),
+                  ),
+                  MeasureLabelWidget(
+                    label: 'Gordura',
+                    value: '170',
+                  ),
+                  SizedBox(height: 70 * 320 / height),
+                  CustomPaint(
+                    painter: new Imc(),
+                  ),
+                  MeasureLabelWidget(
+                    label: 'IMC',
+                    value: '22',
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              height: height - (64 * 568 / height),
               child: Image.asset(
                 'assets/images/women-silhouette.png',
                 fit: BoxFit.fitHeight,
               ),
             ),
             Positioned(
-              bottom: 8,
-              left: width * .3,
+              bottom: 8 * 568 / height,
+              right: .3 * 320 / width,
               child: Text('atualizado em ${DateTime.now()}'),
             ),
             Positioned(
-              right: 48,
-              top: 48,
+              right: 48 * 320 / width,
+              top: 48 * 568 / height,
               child: Row(
                 children: [
                   MeasureLabelWidget(
@@ -39,7 +67,7 @@ class MedidasScreen extends StatelessWidget {
                     value: '170',
                     measure: 'cm',
                   ),
-                  SizedBox(width: 16),
+                  SizedBox(width: 16 * 320 / width),
                   MeasureLabelWidget(
                     label: 'Peso',
                     value: '70',
@@ -49,18 +77,58 @@ class MedidasScreen extends StatelessWidget {
               ),
             ),
             NestedMeasureWidget(
-              top: 188,
+              top: 145 * 568 / height,
               left: 0,
-              width: width * .5,
+              width: width * (.5 * 320 / width),
               label: 'Pescoço',
               value: '95',
               measure: ' cm',
             ),
             NestedMeasureWidget(
-              top: 188 + 48,
+              top: (145 + 55) * 568 / height,
               left: 0,
-              width: width * .6,
+              width: width * (.8 * 320 / width),
               label: 'Peito',
+              value: '95',
+              measure: ' cm',
+            ),
+            NestedMeasureWidget(
+              top: (145 + 100) * 568 / height,
+              left: 65 * 320 / width,
+              width: width * (.38 * 320 / width),
+              label: 'Biceps',
+              value: '95',
+              measure: ' cm',
+            ),
+            NestedMeasureWidget(
+              top: (145 + 150) * 568 / height,
+              left: 0,
+              width: width * (.8 * 320 / width),
+              label: 'Cintura',
+              value: '95',
+              measure: ' cm',
+            ),
+            NestedMeasureWidget(
+              top: (145 + 190) * 568 / height,
+              left: 25 * 320 / width,
+              width: width * (.46 * 320 / width),
+              label: 'Quadril',
+              value: '95',
+              measure: ' cm',
+            ),
+            NestedMeasureWidget(
+              top: (145 + 270) * 568 / height,
+              left: 20 * 320 / width,
+              width: width * (.76 * 320 / width),
+              label: 'Coxa',
+              value: '95',
+              measure: ' cm',
+            ),
+            NestedMeasureWidget(
+              top: (145 + 370) * 568 / height,
+              left: 17 * 320 / width,
+              width: width * (.49 * 320 / width),
+              label: 'Panturrilha',
               value: '95',
               measure: ' cm',
             ),
@@ -106,7 +174,10 @@ class NestedMeasureWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16.0, right: 8),
+                padding: const EdgeInsets.only(
+                  left: 16.0, 
+                  right: 8
+                ),
                 child: DottedLine(
                   dashGapLength: 8,
                 ),
@@ -139,7 +210,7 @@ class MeasureLabelWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text('$label'),
         RichText(
@@ -160,5 +231,61 @@ class MeasureLabelWidget extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class Gordura extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // create a bounding square, based on the centre and radius of the arc
+    var paint = Paint()
+    ..color =  Colors.teal
+    ..strokeWidth = 8
+    ..style = PaintingStyle.stroke;
+    
+    final arc1 = Path();
+    arc1.moveTo(-35, 22);
+    arc1.arcToPoint(
+      Offset(0, -13),
+      radius: Radius.circular(35),
+    );
+    arc1.arcToPoint(
+      Offset(0, 62),
+      radius: Radius.circular(35),
+    );
+    canvas.drawPath(arc1, paint);
+  }
+
+  @override
+  bool shouldRepaint(Gordura oldDelegate) {
+    return true;
+  }
+}
+
+class Imc extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // create a bounding square, based on the centre and radius of the arc
+    var paint = Paint()
+    ..color = Colors.teal
+    ..strokeWidth = 8
+    ..style = PaintingStyle.stroke;
+    
+    final arc1 = Path();
+    arc1.moveTo(-35, 22);
+    arc1.arcToPoint(
+      Offset(0, -13),
+      radius: Radius.circular(35),
+    );
+    arc1.arcToPoint(
+      Offset(0, 62),
+      radius: Radius.circular(35),
+    );
+    canvas.drawPath(arc1, paint);
+  }
+
+  @override
+  bool shouldRepaint(Imc oldDelegate) {
+    return true;
   }
 }
