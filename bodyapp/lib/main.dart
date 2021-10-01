@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: MedidasScreen(),
     );
   }
 }

@@ -238,8 +238,31 @@ class Gordura extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // create a bounding square, based on the centre and radius of the arc
+    Rect rect = new Rect.fromCircle(
+      center: new Offset(0.0, 0.0),
+      radius: 90.0,
+    );
+
+    final Gradient gradient = new RadialGradient(
+      colors: <Color>[
+        Colors.blue.withOpacity(1.0),
+        Colors.blue.withOpacity(0.9),
+        Colors.green.withOpacity(1.0),
+        Colors.red.withOpacity(0.9),
+        Colors.red.withOpacity(1.0),
+      ],
+      stops: [
+        0.0,
+        0.3,
+        0.5,
+        0.7,
+        1.0,
+      ],
+    );
+    
     var paint = Paint()
-    ..color =  Colors.teal
+    ..shader = gradient.createShader(rect)
+    //..color = Colors.teal
     ..strokeWidth = 8
     ..style = PaintingStyle.stroke;
     
@@ -254,10 +277,11 @@ class Gordura extends CustomPainter {
       radius: Radius.circular(35),
     );
     canvas.drawPath(arc1, paint);
+    //canvas.drawArc(rect, pi / 40, pi * 30 / 40, true, paint);
   }
 
   @override
-  bool shouldRepaint(Gordura oldDelegate) {
+  bool shouldRepaint(Imc oldDelegate) {
     return true;
   }
 }
@@ -266,8 +290,31 @@ class Imc extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // create a bounding square, based on the centre and radius of the arc
+    Rect rect = new Rect.fromCircle(
+      center: new Offset(0.0, 0.0),
+      radius: 90.0,
+    );
+
+    final Gradient gradient = new RadialGradient(
+      colors: <Color>[
+        Colors.blue.withOpacity(1.0),
+        Colors.blue.withOpacity(0.9),
+        Colors.green.withOpacity(1.0),
+        Colors.red.withOpacity(0.9),
+        Colors.red.withOpacity(1.0),
+      ],
+      stops: [
+        0.0,
+        0.3,
+        0.5,
+        0.7,
+        1.0,
+      ],
+    );
+    
     var paint = Paint()
-    ..color = Colors.teal
+    ..shader = gradient.createShader(rect)
+    //..color = Colors.teal
     ..strokeWidth = 8
     ..style = PaintingStyle.stroke;
     
@@ -282,6 +329,7 @@ class Imc extends CustomPainter {
       radius: Radius.circular(35),
     );
     canvas.drawPath(arc1, paint);
+    //canvas.drawArc(rect, pi / 40, pi * 30 / 40, true, paint);
   }
 
   @override
