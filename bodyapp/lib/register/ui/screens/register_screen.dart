@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/brandico_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:boxicons/boxicons.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:validators/validators.dart';
 
 
@@ -38,9 +39,9 @@ class RegisterScreen extends StatelessWidget {
             ),
             child: CircleAvatar(
               child: const Icon(
-                Icons.camera,
+                Boxicons.bx_camera,
                 color: Colors.white,
-                size: 15,
+                size: 30,
               ),
               radius: 40, 
             ),
@@ -48,40 +49,40 @@ class RegisterScreen extends StatelessWidget {
           RegisterFormWidget(),
         ],
       ),
-      //bottomNavigationBar: BottomNavigationBar(
-      //  selectedFontSize: 14,
-      //  selectedItemColor: Colors.black,
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 14,
+        selectedItemColor: Colors.black,
 
-      //  unselectedFontSize: 14,
-      //  unselectedItemColor: Colors.black,
-      //  items: const <BottomNavigationBarItem>[
-      //    BottomNavigationBarItem(
-      //      icon: Icon(
-      //        Icons.facebook,
-      //        size: 32.0,
-      //        color: Colors.blue,
-      //      ),
-      //      label: 'FaceBook',
-      //    ),
-      //    BottomNavigationBarItem(
-      //      icon: Icon(
-      //        Icons.facebook,
-      //        size: 32.0,
-      //        color: Colors.cyan,                
-      //      ),
-      //      label: 'Twitter',
-      //    ),
-      //    BottomNavigationBarItem(
-      //      icon: Icon(
-      //        Icons.facebook,
-      //        size: 32.0,
-      //        color: Colors.red,
-      //      ),
-      //      label: 'Google',
-      //    ),
-      //  ],
-      //  onTap: null,
-      //),
+        unselectedFontSize: 14,
+        unselectedItemColor: Colors.black,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.facebook,
+              size: 32.0,
+              color: Colors.blue,
+            ),
+            label: 'FaceBook',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Boxicons.bxl_twitter,
+              size: 32.0,
+              color: Colors.cyan,                
+            ),
+            label: 'Twitter',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Boxicons.bxl_google,
+              size: 32.0,
+              color: Colors.red,
+            ),
+            label: 'Google',
+          ),
+        ],
+        onTap: null,
+      ),
     );
   }
 }
@@ -110,13 +111,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             padding: const EdgeInsets.all(10.0),
             child: InputWidget(
               hintText: 'Nome',
-              prefixIcon: Icons.camera,
-              //validator: (value) {
-              //  if (value != null) {
-              //    return 'Preencha um nome válido.';
-              //  }
-              //  return null;
-              //},
+              prefixIcon: Boxicons.bx_user,
             ),
           ),
           Padding(
