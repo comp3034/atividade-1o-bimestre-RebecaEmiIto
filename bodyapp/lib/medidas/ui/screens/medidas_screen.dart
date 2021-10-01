@@ -23,7 +23,7 @@ class MedidasScreen extends StatelessWidget {
               top: 170 * 568 / height,
               right: 90 * 320 / width,
 
-              width: 100 * 320 / width,
+              width: 150 * 320 / width,
               height: 300 * 568 / height,
               child: Column(
                 children: [

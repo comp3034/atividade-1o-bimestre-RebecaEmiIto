@@ -30,24 +30,12 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 120,
-              vertical: 20,
-            ),
-            child: CircleAvatar(
-              child: const Icon(
-                Boxicons.bx_camera,
-                color: Colors.white,
-                size: 30,
-              ),
-              radius: 40, 
-            ),
-          ),
-          RegisterFormWidget(),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            RegisterFormWidget(),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 14,
@@ -107,6 +95,20 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
       key: _formKey,
       child: Column(
         children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 120,
+              vertical: 20,
+            ),
+            child: CircleAvatar(
+              child: const Icon(
+                Boxicons.bx_camera,
+                color: Colors.white,
+                size: 30,
+              ),
+              radius: 40, 
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: InputWidget(
