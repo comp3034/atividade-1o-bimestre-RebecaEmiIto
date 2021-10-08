@@ -37,40 +37,44 @@ class RegisterScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 14,
-        selectedItemColor: Colors.black,
+    );
+  }
+}
 
-        unselectedFontSize: 14,
-        unselectedItemColor: Colors.black,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.facebook,
-              size: 32.0,
-              color: Colors.blue,
-            ),
-            label: 'FaceBook',
+class RedesSociais extends StatelessWidget{
+  const RedesSociais({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        const IconButton(
+          icon: Icon(
+            Icons.facebook,
+            size: 42.0,
+            color: Colors.blue,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Boxicons.bxl_twitter,
-              size: 32.0,
-              color: Colors.cyan,                
-            ),
-            label: 'Twitter',
+          onPressed: null,
+        ),
+        IconButton(
+          icon: Icon(
+            Boxicons.bxl_twitter,
+            size: 42.0,
+            color: Colors.cyan,                
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Boxicons.bxl_google,
-              size: 32.0,
-              color: Colors.red,
-            ),
-            label: 'Google',
+          onPressed: null,
+        ),
+        IconButton(
+          icon: Icon(
+            Boxicons.bxl_google,
+            size: 42.0,
+            color: Colors.red,
           ),
-        ],
-        onTap: null,
-      ),
+          onPressed: null,
+        ),
+      ]
     );
   }
 }
@@ -87,7 +91,12 @@ class RegisterFormWidget extends StatefulWidget {
 class _RegisterFormWidgetState extends State<RegisterFormWidget> {
   final _formKey = GlobalKey<FormState>();
 
+  RegExp _upper = RegExp(r'[A-Z]');
+  RegExp _lower = RegExp(r'[a-z]');
+  RegExp _numeric = RegExp(r'[0-9]');
   bool isPasswordObscured = true;
+  bool isConfirmPasswordObscured = true;
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +155,22 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                 if (value != null && value.length < 6) {
                   return 'A senha deve conter no mínimo 6 caracteres';
                 }
+                if (value != null && !value.contains(_upper)) {
+                  return 'A senha deve conter no mínimo 1 caractere maiúsculo';
+                }
+                if (value != null && !value.contains(_lower)) {
+                  return 'A senha deve conter no mínimo 1 caractere minúsculo';
+                }
+                if (value != null && !value.contains(_numeric)) {
+                  return 'A senha deve conter no mínimo 1 número';
+                }
                 return null;
+              },
+
+              onChanged: (value) {
+                setState((){
+                  _password = value;
+                });
               },
             ),
           ),
@@ -156,23 +180,35 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
               hintText: 'Confirmar Senha',
               prefixIcon: Icons.lock,
               sufixIcon:
-                  isPasswordObscured ? Icons.visibility_off : Icons.visibility,
-              obscureText: isPasswordObscured,
+                  isConfirmPasswordObscured ? Icons.visibility_off : Icons.visibility,
+              obscureText: isConfirmPasswordObscured,
               suffixIconOnPressed: () {
                 setState(() {
-                  isPasswordObscured = !isPasswordObscured;
+                  isConfirmPasswordObscured = !isConfirmPasswordObscured;
                 });
               },
               validator: (value) {
                 if (value != null && value.length < 6) {
                   return 'A senha deve conter no mínimo 6 caracteres';
                 }
+                if (value != null && !value.contains(_upper)) {
+                  return 'A senha deve conter no mínimo 1 caractere maiúsculo';
+                }
+                if (value != null && !value.contains(_lower)) {
+                  return 'A senha deve conter no mínimo 1 caractere minúsculo';
+                }
+                if (value != null && !value.contains(_numeric)) {
+                  return 'A senha deve conter no mínimo 1 número';
+                }
+                if (value != _password){
+                  return 'A senha inserida não bate com a anterior';
+                }
                 return null;
               },
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+            padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
               onPressed: () {},
               child: Center(
@@ -186,6 +222,12 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
               ),
             ),
           ),
+          Container(
+            color: Colors.teal[100],
+            padding: EdgeInsets.all(2.0),
+            margin: EdgeInsets.all(5.0),
+          ),
+          RedesSociais(),
         ],
       ),
     );
