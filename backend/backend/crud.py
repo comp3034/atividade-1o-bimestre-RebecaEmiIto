@@ -28,17 +28,16 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 ### User Edit
 def edit_user(db: Session, user_id: int, new_value: schemas.UserEdit):
-    print(new_value)
-    db_user = db.query(models.User).filter(models.User.id == user_id).first()
+    db_user = get_user(db, user_id)
     if db_user:
         if new_value.name != None:
-            db_user.name = new_value.name
+            db_user.name = new_value[0]
         
         if new_value.email != None:
-            db_user.email = new_value.email
+            db_user.email = new_value[1]
 
         if new_value.birth_date != None:
-            db_user.birth_date = new_value.birth_date
+            db_user.birth_date = new_value[2]
 
         db.update(db_user)
         db.commit()

@@ -47,6 +47,7 @@ async def edit_user(user_id: int, new_value: schemas.UserEdit, db: Session = Dep
     db_user = crud.get_user(db, user_id)
     if db_user:
         return crud.edit_user(db, user_id, new_value)
+    
     raise HTTPException(status_code=400, detail="Usuário inexistente")
 
 

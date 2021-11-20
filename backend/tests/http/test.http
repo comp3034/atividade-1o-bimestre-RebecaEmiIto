@@ -88,6 +88,6 @@ Content-Type: application/json
 
 {
     "name": "Emi Ito",
-    "email": "",
-    "birth_date": ""
+    "email": "emiito@email.com",
+    "birth_date": "2000-09-23T21:32:01.793Z"
 }
