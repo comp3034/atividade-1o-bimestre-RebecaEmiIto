@@ -43,14 +43,14 @@ class UserCreate(UserBase):
     password: str
 
 
-class UserEdit(UserBase):
-    birth_date: Optional[datetime]
-
-
 class User(UserBase):
     id: int
     is_active: bool
-    birth_date: Optional[datetime]
+    birth_date: Optional[datetime]    
 
     class Config:
         orm_mode = True
+
+
+class UserEdit(UserBase):
+    birth_date: Optional[datetime]

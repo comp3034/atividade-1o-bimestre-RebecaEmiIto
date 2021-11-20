@@ -1,8 +1,5 @@
 from sqlalchemy.orm import Session
-
-from backend.main import create_measure
 from . import models, schemas
-
 
 ### User
 def get_user(db: Session, user_id: int):
