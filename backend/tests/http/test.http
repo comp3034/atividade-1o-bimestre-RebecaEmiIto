@@ -1,0 +1,104 @@
+
+GET http://127.0.0.1:8000/hello/2021
+
+
+
+###
+GET http://127.0.0.1:8000/measures/
+
+
+
+###
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+
+{
+    "name": "Mario",
+    "email": "mario@email.com",
+    "password": "12345"
+}
+
+
+
+###
+GET http://127.0.0.1:8000/users/3
+
+
+
+###
+POST http://127.0.0.1:8000/users/3/measure/
+Content-Type: application/json
+
+{
+    "height": "158",
+    "weight": "55",
+    "neck": "90",
+    "chest": "90",
+    "biceps": "90",
+    "waist": "90",
+    "thighs": "90",
+    "calf": "90"
+}
+
+
+
+
+###
+POST http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+    "name": "Rebeca Emi Ito",
+    "email": "rebecaemiito@email.com",
+    "password": "54321"
+}
+
+
+
+###
+POST http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+    "name": "Emi Teste",
+    "email": "emiteste1@email.com",
+    "password": "321"
+}
+
+
+
+###
+GET http://127.0.0.1:8000/users/3
+
+
+
+###
+GET http://127.0.0.1:8000/users/3/measures
+
+
+
+###
+PUT http://127.0.0.1:8000/users/8
+Content-Type: application/json
+
+{
+    "name": "Nome",
+    "price": 1
+}
+
+
+
+### 
+DELETE http://127.0.0.1:8000/users/4
+
+
+
+###
+PUT http://127.0.0.1:8000/users/3
+Content-Type: application/json
+
+{
+    "name": "Emi Ito",
+    "email": "rebecaemiito@email.com",
+    "birth_date": "2021-11-20"
+}
