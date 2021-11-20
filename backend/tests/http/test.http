@@ -26,7 +26,7 @@ GET http://127.0.0.1:8000/users/3
 
 
 ###
-POST http://127.0.0.1:8000/users/3/measure/
+POST http://127.0.0.1:8000/users/3/measures/
 Content-Type: application/json
 
 {
@@ -73,18 +73,7 @@ GET http://127.0.0.1:8000/users/3
 
 
 ###
-GET http://127.0.0.1:8000/users/3/measures
-
-
-
-###
-PUT http://127.0.0.1:8000/users/8
-Content-Type: application/json
-
-{
-    "name": "Nome",
-    "price": 1
-}
+GET http://127.0.0.1:8000/users/3/measures/
 
 
 
@@ -99,6 +88,6 @@ Content-Type: application/json
 
 {
     "name": "Emi Ito",
-    "email": "rebecaemiito@email.com",
-    "birth_date": "2021-11-20"
+    "email": "",
+    "birth_date": ""
 }

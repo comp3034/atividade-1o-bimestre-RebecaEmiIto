@@ -15,15 +15,7 @@ class MeasureBase(BaseModel):
     
 
 class MeasureCreate(MeasureBase):
-    height: Optional[int]
-    weight: Optional[int]
-    neck: Optional[int]
-    chest: Optional[int]
-    biceps: Optional[int]
-    hips: Optional[int]
-    waist: Optional[int]
-    thighs: Optional[int]
-    calf: Optional[int]
+    id: int
 
 
 class Measure(MeasureBase):
