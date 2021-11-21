@@ -53,7 +53,7 @@ def get_measures(db: Session, skip: int = 0, limit: int = 100):
 
 ### User Measure
 def get_user_measure(db: Session, user_id: int):
-    return db.query(models.Measure).filter(models.Measure.id == user_id).first()
+    return db.query(models.Measure).filter(models.Measure.user_id == user_id).all()
 
 
 ### Measure Create

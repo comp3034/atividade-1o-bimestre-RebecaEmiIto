@@ -26,18 +26,18 @@ GET http://127.0.0.1:8000/users/3
 
 
 ###
-POST http://127.0.0.1:8000/users/3/measures/
+POST http://127.0.0.1:8000/users/4/measures/
 Content-Type: application/json
 
 {
-    "height": "158",
-    "weight": "55",
-    "neck": "90",
-    "chest": "90",
-    "biceps": "90",
-    "waist": "90",
-    "thighs": "90",
-    "calf": "90"
+    "height": "168",
+    "weight": "60",
+    "neck": "70",
+    "chest": "70",
+    "biceps": "70",
+    "waist": "70",
+    "thighs": "70",
+    "calf": "70"
 }
 
 
