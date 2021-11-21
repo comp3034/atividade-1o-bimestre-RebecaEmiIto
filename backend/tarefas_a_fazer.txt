@@ -8,7 +8,7 @@ PUT/PATCH de usuário (alteração dos campos nome,   |
 email e data de nascimento) (/users/<int:id>/)     |
 ___________________________________________________|_____________________________________
                                                    |
-POST de medidas (/users/<int:id>/measures/)        |
+POST de medidas (/users/<int:id>/measures/)        |                 OK
 ___________________________________________________|_____________________________________
                                                    |
 GET de todas as medidas (/measures/)               |                 OK

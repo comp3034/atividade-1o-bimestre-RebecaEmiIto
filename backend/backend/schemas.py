@@ -15,7 +15,7 @@ class MeasureBase(BaseModel):
     
 
 class MeasureCreate(MeasureBase):
-    id: int
+    pass
 
 
 class Measure(MeasureBase):

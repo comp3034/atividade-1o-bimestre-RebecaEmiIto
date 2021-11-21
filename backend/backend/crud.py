@@ -28,16 +28,16 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 ### User Edit
 def edit_user(db: Session, user_id: int, new_value: schemas.UserEdit):
-    db_user = get_user(db, user_id)
-    if db_user:
+    db_user = get_user(db, user_id) # get user bi id
+    if db_user: # if id exist
         if new_value.name != None:
-            db_user.name = new_value[0]
+            db_user.name = new_value.name
         
         if new_value.email != None:
-            db_user.email = new_value[1]
+            db_user.email = new_value.email
 
         if new_value.birth_date != None:
-            db_user.birth_date = new_value[2]
+            db_user.birth_date = new_value.birth_date
 
         db.update(db_user)
         db.commit()
@@ -60,7 +60,7 @@ def get_user_measure(db: Session, user_id: int):
 def create_user_measure(db: Session, measure: schemas.MeasureCreate, user_id: int):
     db_measure = models.Measure(
         **measure.dict(), 
-        owner_id=user_id
+        user_id=user_id
     )
     db.add(db_measure)
     db.commit()
